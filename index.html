@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ndele Creatives | Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Rubik', sans-serif;
+    }
+    
+    body {
+      background-color: #f4f4f4;
+      color: #333;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background: linear-gradient(135deg, #2c3e50, #3498db);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      animation: fadeInDown 1.5s ease-out;
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    header h1 {
+      font-size: 3rem;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .cta-buttons {
+      margin-top: 1rem;
+    }
+
+    .cta-buttons a {
+      display: inline-block;
+      margin: 0 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: #ff5e57;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    .cta-buttons a:hover {
+      background: #e14a44;
+    }
+
+    section {
+      padding: 3rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #111;
+      text-align: center;
+    }
+
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      backdrop-filter: blur(12px);
+    }
+
+    .services div {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+      backdrop-filter: blur(10px);
+      color: #000;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      transition: transform 0.3s ease;
+    }
+
+    .services div:hover {
+      transform: translateY(-5px);
+    }
+
+    .services h3::before {
+      content: "\1F4BB";
+      margin-right: 8px;
+    }
+
+    .swiper {
+      width: 100%;
+      padding: 2rem 0;
+    }
+
+    .swiper-slide {
+      background: white;
+      border-radius: 10px;
+      padding: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .newsletter {
+      display: grid;
+      gap: 1.5rem;
+    }
+    
+     #blog-preview {
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .section-title {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .carousel-item {
+      min-width: 100%;
+      box-sizing: border-box;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    iframe {
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 4 / 5;
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+    }
+
+    .blog-title {
+      margin-top: 15px;
+      font-size: 1.2em;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.3);
+      padding: 6px 12px;
+      border-radius: 8px;
+      backdrop-filter: blur(6px);
+    }
+
+    .carousel-nav {
+      margin-top: 15px;
+    }
+
+    .carousel-btn {
+      padding: 10px 18px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.6);
+      color: #fff;
+      margin: 0 8px;
+      backdrop-filter: blur(6px);
+      transition: background 0.3s;
+    }
+
+    .carousel-btn:hover {
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .dots {
+      display: flex;
+      justify-content: center;
+      margin-top: 18px;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .dot.active {
+      background: #fff;
+      border: 2px solid #222;
+    }
+
+    @media (max-width: 768px) {
+      iframe {
+        aspect-ratio: 4 / 5;
+      }
+      .blog-title {
+        font-size: 1em;
+      }
+    }
+
+    @media (max-width: 480px) {
+      iframe {
+        aspect-ratio: 4 / 5;
+      }
+      .section-title {
+        font-size: 1.5em;
+      }
+    }
+
+    .footer {
+      background: #1e1e2f;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #ff5e57;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    #instagram-feed {
+  max-width: 960px;
+  margin: 80px auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.glass-container {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  padding: 1rem;
+  overflow: hidden;
+}
+
+.follow-note {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+}
+
+.follow-note a {
+  color: #ffcc00;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.follow-note a:hover {
+  text-decoration: underline;
+}
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      .cta-buttons a {
+        display: block;
+        margin: 0.5rem auto;
+      }
+      }
+
+    #whatsapp-float {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: #25D366;
+  color: white;
+  padding: 1rem 1.2rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+#location {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  margin: 2rem auto;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 960px;
+}
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Ndele Creatives</h1>
+  <p>Crafting Identity. Creating Impact.</p>
+  <div class="cta-buttons">
+    <a href="#services">Explore Our Work</a>
+    <a href="#contact">Get a Quote</a>
+  </div>
+</header>
+
+<section id="about">
+  <h2 class="section-title">About Us</h2>
+  <p style="text-align: center;">We are a tech-driven creative studio helping brands transform their identity through modern design and smart digital solutions. Based in Tanzania, we work with clients globally on branding, design, and AI-powered experiences.</p>
+</section>
+
+<section id="services">
+  <h2 class="section-title">Our Services</h2>
+  <div class="services">
+  <div>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRENF9uv9UWIWWbExsgj7XyX58xMFAOZTzUSQ&s" alt="Logo & Branding" style="width:100%; border-radius:10px; margin-bottom:1rem;">
+    <h3>Logo & Branding</h3>
+    <p>Crafting powerful and memorable visual identities for your business and online presence.</p>
+  </div>
+  <div>
+    <img src="https://img.freepik.com/free-photo/woman-retouching-image_23-2149360859.jpg" alt="Photo Editing" style="width:100%; border-radius:10px; margin-bottom:1rem;">
+    <h3>Photo Editing</h3>
+    <p>Enhance your visuals with creative retouching, manipulation, and content-ready imagery.</p>
+  </div>
+  <div>
+    <img src="data:image/jpeg;base64,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" alt="Tech Services" style="width:100%; border-radius:10px; margin-bottom:1rem;">
+    <h3>Tech Services</h3>
+    <p>Windows, MS Office installs, laptop servicing, and custom tech setup for homes/offices.</p>
+  </div>
+  <div>
+    <img src="https://img.freepik.com/free-vector/chatbot-concept-illustration_114360-5523.jpg" alt="AI Chatbots" style="width:100%; border-radius:10px; margin-bottom:1rem;">
+    <h3>AI Chatbots</h3>
+    <p>Interactive WhatsApp and web-based AI bots for customer support and smart assistance.</p>
+  </div>
+</div>
+</section>
+
+<section id="testimonials">
+  <h2 class="section-title">What Our Clients Say</h2>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">“Incredible design quality and fast delivery! Highly recommended.”<br><strong>- J. Michael</strong></div>
+      <div class="swiper-slide">“Ndele Creatives gave my brand a fresh, modern identity. Loved it!”<br><strong>- A. Zawadi</strong></div>
+      <div class="swiper-slide">“Great support and the chatbot they built helped us a lot.”<br><strong>- K. Musa</strong></div>
+    </div>
+  </div>
+</section>
+
+<section id="blog-preview">
+  <h2 class="section-title">From Our Blog</h2>
+  <div class="carousel" id="carousel">
+    <div class="carousel-track" id="carouselTrack">
+      <div class="carousel-item">
+        <iframe src="https://ndelestudio.blogspot.com/" loading="lazy"></iframe>
+        <div class="blog-title">Ndele Studio</div>
+      </div>
+      <div class="carousel-item">
+        <iframe src="https://digitalafya365.blogspot.com/" loading="lazy"></iframe>
+        <div class="blog-title">Digital Afya 365</div>
+      </div>
+      <div class="carousel-item">
+        <iframe src="https://bnmclassic.blogspot.com/" loading="lazy"></iframe>
+        <div class="blog-title">BNM Classic</div>
+      </div>
+      <div class="carousel-item">
+        <iframe src="https://mbeyadigitalsavvy.blogspot.com/" loading="lazy"></iframe>
+        <div class="blog-title">Mbeya Digital Savvy</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="carousel-nav">
+    <button class="carousel-btn" onclick="moveSlide(-1)">&#10094; Prev</button>
+    <button class="carousel-btn" onclick="moveSlide(1)">Next &#10095;</button>
+  </div>
+
+  <div class="dots" id="dotsContainer"></div>
+</section>
+
+<section id="location">
+  <h2 class="section-title">Our Location</h2>
+  <div style="position:relative; overflow:hidden; border-radius:16px;">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63784.667840457246!2d33.401382176861436!3d-8.932858368345998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19decb80e3ed888f%3A0x6c726a0c6f6c8b13!2sIziwa%2C%20Mbeya%2C%20Tanzania!5e0!3m2!1sen!2stz!4v1720188533451"
+      width="100%"
+      height="450"
+      style="border:0; filter: blur(0) saturate(120%) brightness(105%); border-radius: 1rem;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+  <section id="instagram-feed">
+    <h2 class="section-title">Instagram Feed</h2>
+    <div class="glass-container">
+      <!-- Elfsight widget -->
+      <div class="elfsight-app-f3b2abe6-7029-48fa-9d4f-02e2a861f3b8"></div>
+    </div>
+    <p class="follow-note">
+      See more on <a href="https://www.instagram.com/ndele_grafix/" target="_blank">@ndele_grafix</a>
+    </p>
+    <script src="https://static.elfsight.com/platform/platform.js" async="async"></script>
+  </section>
+</a>
+<footer class="footer">
+  <p>Follow Us:
+    <a href="https://instagram.com/ndele_grafix" target="_blank">Instagram</a> |
+    <a href="https://facebook.com/fotinatindele46" target="_blank">Facebook</a> |
+    <a href="https://tiktok.com/@ndele_grafix" target="_blank">TikTok</a>
+  </p>
+  <p>&copy; 2025 Ndele Creatives. All rights reserved.</p>
+</footer>
+ <!-- WhatsApp Floating Button -->
+<a id="whatsapp-float" href="https://wa.me/255621734853?text=Hi%20Ndele%20Creatives%2C%20I%E2%80%99m%20interested%20in%20your%20services." target="_blank" title="Chat with us on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script>
+    
+  const track = document.getElementById("carouselTrack");
+  const carousel = document.getElementById("carousel");
+  const totalItems = track.children.length;
+  let currentSlide = 0;
+  let startX = 0;
+  let isDragging = false;
+
+  const dotsContainer = document.getElementById("dotsContainer");
+
+  for (let i = 0; i < totalItems; i++) {
+    const dot = document.createElement('span');
+    dot.classList.add('dot');
+    if (i === 0) dot.classList.add('active');
+    dot.setAttribute('data-index', i);
+    dot.onclick = () => goToSlide(i);
+    dotsContainer.appendChild(dot);
+  }
+
+  function updateDots() {
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(dot => dot.classList.remove('active'));
+    dots[currentSlide].classList.add('active');
+  }
+
+  function moveSlide(direction) {
+    currentSlide += direction;
+    if (currentSlide < 0) currentSlide = totalItems - 1;
+    if (currentSlide >= totalItems) currentSlide = 0;
+    updateCarousel();
+  }
+
+  function goToSlide(index) {
+    currentSlide = index;
+    updateCarousel();
+  }
+
+  function updateCarousel() {
+    track.style.transform = `translateX(-${currentSlide * 100}%)`;
+    updateDots();
+  }
+
+  // Swipe gestures (mobile)
+  carousel.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isDragging = true;
+  });
+
+  carousel.addEventListener('touchmove', (e) => {
+    if (!isDragging) return;
+    const moveX = e.touches[0].clientX;
+    const diff = startX - moveX;
+    if (diff > 50) {
+      moveSlide(1);
+      isDragging = false;
+    } else if (diff < -50) {
+      moveSlide(-1);
+      isDragging = false;
+    }
+  });
+
+  carousel.addEventListener('touchend', () => {
+    isDragging = false;
+  });
+  const swiper = new Swiper('.swiper', {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: true,
+    autoplay: { delay: 3000 },
+  });
+</script>
+</body>
+</html>
